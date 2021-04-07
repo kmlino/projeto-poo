@@ -10,6 +10,7 @@ public class Main {
 	// TODO: acrescentar os outros grupos
 	
 	public static void exercicioGrupo2() {
+		System.out.println("Grupo 2:");
 		System.out.println("Kennedy Matheus Lino");
 	}
 
