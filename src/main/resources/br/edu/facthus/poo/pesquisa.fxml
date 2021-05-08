@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.facthus.poo.PesquisaController">
+<VBox alignment="CENTER" prefHeight="409.0" prefWidth="150.0" spacing="20.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.edu.facthus.poo.PesquisaController">
 	<children>
 		<Label text="Projeto POO">
          <font>
             <Font name="System Bold" size="13.0" />
          </font></Label>
-      <Label text="Pesquisa" />
-      <Label text="Em construçao..." />
+      <Label text="Código:" />
+      <TextField fx:id="txtNumero" />
+      <Button mnemonicParsing="false" onAction="#pesquisa" text="Pesquisa" />
+      <Label fx:id="lblSaida" />
+      <Label text="Quantidade disponivel:" />
+      <Label text="Quantidade:" />
+      <TextField />
+      <Button mnemonicParsing="false" text="Entrada" />
+      <Button mnemonicParsing="false" text="Saída" />
 	</children>
 </VBox>
