@@ -11,6 +11,14 @@ public class Produto {
 	private BigDecimal preco;
 	
 	private Integer quantidade;
+	
+	public Produto(Integer id, String descricao, BigDecimal preco, Integer quantidade) {
+		super();
+		this.id = id;
+		this.descricao = descricao;
+		this.preco = preco;
+		this.quantidade = quantidade;
+	}
 
 	public Integer getId() {
 		return id;
