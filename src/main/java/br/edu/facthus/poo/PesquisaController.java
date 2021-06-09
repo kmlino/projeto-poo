@@ -1,5 +1,7 @@
 package br.edu.facthus.poo;
 
+import br.edu.facthus.poo.model.Produto;
+import br.edu.facthus.poo.service.ProdutosService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -10,33 +12,66 @@ public class PesquisaController {
 	private TextField txtNumero;
 	
 	@FXML
-	private Label lblSaida;
+	private Label lblDescricao;
+	
+	@FXML
+	private Label lblQuantidadeDisponivel;
+	
+	@FXML
+	private TextField txtQuantidade;
+	
+	private Produto produto;
 	
 	@FXML
 	private void pesquisa() {
-		// EX06: completar...
-		Integer n1 = Integer.parseInt(txtNumero.getText());
+		Integer idPesquisa = Integer.parseInt(txtNumero.getText());
 		
-		lblSaida.setText(String.format("Pesquisando produto com código..."
-				));
+		produto = ProdutosService.pesquisa(idPesquisa);
+		
+		if (produto == null) {
+			GuiUtils.error("Nenhum produto encontrado com o código informado.");
+			return;
+		}
+		
+		lblDescricao.setText(produto.getDescricao());
+		lblQuantidadeDisponivel.setText(
+				String.valueOf(produto.getQuantidade()));
 	}
 	
 	@FXML
 	private void entrada() {
-		// EX07: completar...
-		Integer n1 = Integer.parseInt(txtNumero.getText());
-		
-		lblSaida.setText(String.format("Pesquisando entrada de...itens"
-				));
+		try {
+			if (produto == null) {
+				GuiUtils.error("Nenhum produto selecionado.");
+				return;
+			}
+	
+			Integer quantidade = Integer.parseInt(txtQuantidade.getText());
+			produto.setQuantidade(produto.getQuantidade() + quantidade);
+			
+			ProdutosService.atualiza(produto);
+			GuiUtils.info("Entrada registrada com sucesso!");
+		} catch (Exception e) {
+			GuiUtils.error("Ocorreu um erro ao registrar a entrada.");
+		}
 	}
 	
 	@FXML
 	private void saida() {
-		// EX08: completar...
-		Integer n1 = Integer.parseInt(txtNumero.getText());
-		
-		lblSaida.setText(String.format("Pesquisando saída de...itens"
-				));
+		try {
+			if (produto == null) {
+				GuiUtils.error("Nenhum produto selecionado.");
+				return;
+			}
+	
+			Integer quantidade = Integer.parseInt(txtQuantidade.getText());
+			produto.setQuantidade(produto.getQuantidade() - quantidade);
+			
+			ProdutosService.atualiza(produto);
+			GuiUtils.info("Saída registrada com sucesso!");
+		} catch (Exception e) {
+			GuiUtils.error("Ocorreu um erro ao registrar a saída.");
+		}
 	}
 	
 }
