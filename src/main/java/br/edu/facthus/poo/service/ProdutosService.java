@@ -21,5 +21,14 @@ public class ProdutosService {
 		}
 		return null;
 	}
+	
+	public static void atualiza(Produto produto) {
+		for (int i = 0; i < produtos.size(); i++) {
+			if (produtos.get(i).getId().equals(produto.getId())) {
+				produtos.get(i).setQuantidade(produto.getQuantidade());
+				return;
+			}
+		}
+	}
 
 } 
