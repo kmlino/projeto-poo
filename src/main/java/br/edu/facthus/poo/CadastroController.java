@@ -3,7 +3,6 @@ package br.edu.facthus.poo;
 import java.math.BigDecimal;
 
 import br.edu.facthus.poo.model.Produto;
-import br.edu.facthus.poo.service.ProdutosService;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
@@ -32,9 +31,10 @@ public class CadastroController {
 			Produto produto = new Produto(id, desc,
 					preco, qtd);
 			
-			ProdutosService.cadastra(produto);
-			
-			GuiUtils.info("Produto cadastrado com sucesso!");
+			// Exercício 12: completar...
+			// ProdutosService.cadastra(produto);
+			// GuiUtils.info("Produto cadastrado com sucesso!");
+			GuiUtils.info("Em construção...");
 		} catch (Exception e) {
 			e.printStackTrace();
 			GuiUtils.error("Ocorreu um erro ao cadastrar o produto.");
