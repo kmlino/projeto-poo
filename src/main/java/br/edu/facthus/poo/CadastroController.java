@@ -9,9 +9,6 @@ import javafx.scene.control.TextField;
 public class CadastroController {
 	
 	@FXML
-	private TextField txtCodigo;
-	
-	@FXML
 	private TextField txtDescricao;
 
 	@FXML
@@ -23,13 +20,11 @@ public class CadastroController {
 	@FXML
 	private void cadastra() {
 		try {
-			Integer id = Integer.parseInt(txtCodigo.getText());
 			String desc = txtDescricao.getText();
 			BigDecimal preco =  new BigDecimal(txtPreco.getText());
 			Integer qtd = Integer.parseInt(txtQuantidade.getText());
 			
-			Produto produto = new Produto(id, desc,
-					preco, qtd);
+			Produto produto = new Produto(desc, preco, qtd);
 			
 			// Exercício 12: completar...
 			// ProdutosService.cadastra(produto);

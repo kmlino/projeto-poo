@@ -12,9 +12,8 @@ public class Produto {
 	
 	private Integer quantidade;
 	
-	public Produto(Integer id, String descricao, BigDecimal preco, Integer quantidade) {
+	public Produto(String descricao, BigDecimal preco, Integer quantidade) {
 		super();
-		this.id = id;
 		this.descricao = descricao;
 		this.preco = preco;
 		this.quantidade = quantidade;
