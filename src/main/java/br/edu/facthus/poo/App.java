@@ -1,10 +1,8 @@
 package br.edu.facthus.poo;
 
 import java.io.IOException;
-import java.math.BigDecimal;
 
-import br.edu.facthus.poo.model.Produto;
-import br.edu.facthus.poo.service.ProdutosService;
+import br.edu.facthus.poo.dao.ProdutosDAO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,13 +14,9 @@ public class App extends Application {
 	private static Scene scene;
 
 	public static void main(String[] args) {
-		// Cria os produtos de teste
-		ProdutosService.cadastra(
-				new Produto(1, "Teclado", new BigDecimal(20), 10));
-		ProdutosService.cadastra(
-				new Produto(2, "Mouse", new BigDecimal(10), 20));
-		ProdutosService.cadastra(
-				new Produto(3, "Headset", new BigDecimal(25), 30));
+		ProdutosDAO produtosDAO = new ProdutosDAO();
+		produtosDAO.criaBD();
+		
 		launch(args);
 	}
 
