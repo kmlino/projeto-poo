@@ -2,6 +2,7 @@ package br.edu.facthus.poo.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -20,7 +21,7 @@ public class ProdutosDAO {
 			
 			return connection;
 		} catch (SQLException e) {
-			throw new CustomException("Erro abrindo conexão com o banco de dados.");
+			throw new CustomException("Erro abrindo conexão com o banco de dados."); 
 		}
 	}
 	
@@ -44,21 +45,22 @@ public class ProdutosDAO {
 	}
 	
 	public void cadastra(Produto produto) {
-// EXERCÍCIO 09: completar...		
-//		try {
-//			Connection connection = getConnection();
-//			PreparedStatement statement = connection.prepareStatement(
-//					"INSERT INTO contatos (nome, email) "
-//					+ "VALUES (?, ?)");
-//			
-//			statement.setString(1, contato.getNome());
-//			statement.setString(2, contato.getEmail());
-//			
-//			statement.execute();
-//		} catch (SQLException e) {
-//			e.printStackTrace();
-//			throw new CustomException("Ocorreu um erro ao inserir o contato.");
-//		}
+ //EXERCÍCIO 09: completar...		
+		try {
+			Connection connection = getConnection();
+			PreparedStatement statement = connection.prepareStatement(
+					"INSERT INTO produtos (descricao, preco, quantidade) "
+					+ "VALUES (?, ?, ?)");
+			
+			statement.setString(1, produto.getDescricao());
+			statement.setFloat(2, produto.getPreco().floatValue());
+			statement.setInt(3, produto.getQuantidade());
+			
+			statement.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new CustomException("Ocorreu um erro ao inserir o contato.");
+		}
 	}
 	
 	public Produto pesquisa(Integer id) {
